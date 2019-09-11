@@ -25,37 +25,77 @@
 """
 
 import socket
+import re
+import time
 
-host = "" # IP address here
-port = 0000 # Port here
+host = "157.230.179.99" # IP address here
+port = 1337 # Port here
+result="Fail"
 wordlist = "/usr/share/wordlists/rockyou.txt" # Point to wordlist file
 
 def brute_force():
-    """
+    '''
         Sockets: https://docs.python.org/2/library/socket.html
         How to use the socket s:
+    '''
+    f = open(wordlist, "r")
+    lines=f.readline
+    count=0
 
-            # Establish socket connection
-            s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-            s.connect((host, port))
+    while count < len(lines) and result == "Fail": 
+   # Establish socket connection
+    #add loop to go through checking if got correct password
+        i+=1
+        s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        s.connect((host, port))
 
-            Reading:
+        #    Reading:
 
-                data = s.recv(1024)     # Receives 1024 bytes from IP/Port
-                print(data)             # Prints data
+        data = s.recv(1024)
+    # Receives 1024 bytes from IP/Port
+        time.sleep(5)
+        print(data)             # Prints data
+        entries = re.split("\n+", data)
+        print entries
+        parts=entries[2].split(" ")
+        print parts
+        int1=int(parts[0])
+        int2=int(parts[2])
+        if parts[1]=="/":
+            answer= int1/int2
+        elif parts[1]=="+":
+            answer= int1+int2
+        elif parts[1]=="-":
+            answer= int1-int2
+        else:
+            answer= int1*int2
+        print answer
+    
+    #elems=re.findall('<num1>(\d+)\s<operand>(\/|\+|\-|\*)\s<num2>(\d+)\s=\s\?',data)
+    #elems.
+    #m = /(<int1>\d+)\s(<operand>\/|\+|\-|\*)\s(<int2>\d+)\s=\s\?/.match(entries[2])
+    #print m.captures
+    
 
-            Sending:
-
-                s.send("something to send\n")   # Send a newline \n at the end of your command
-
+    #extract=re.search("",data)           
+                 #regex the recaptcha
+                 #answer=
+         #   Sending:
+    #when you fail password do s.close
+        s.send(str(answer)+'\n')   # Send a newline \n at the end of your command
+        response=s.recv(1024)
+        time.sleep(5)
+        print response
+#when you get the password you print out i got the password and print it out
+    '''
         General idea:
 
             Given that you know a potential username, use a wordlist and iterate
             through each possible password and repeatedly attempt to login to
             v0idcache's server.
-    """
+    '''
 
-    username = ""   # Hint: use OSINT
+    username = ""  # Hint: use OSINT
     password = ""   # Hint: use wordlist
 
 
