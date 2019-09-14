@@ -17,7 +17,7 @@ Digital acknowledgement: Radhika Khare
 4. 157.230.179.99 is an IP discovered using dnstrails whose hosting provider is Digital Ocean and according to Shodan it's located in New York. Other IPs found through dns trails were 216.239.38.109, 216.239.36.109,216.239.34.109 which according to Shodan are google servers located in Omaha.
 5. I found a comment in the admin page referring to a backend into the login page but as I have yet to find it i don't know if it's a red herring. Additionally I wasn't able to do much yet with robots.txt if you don't include finding the one flag but i guess i found it. Also I found the wattsamp.net/assets page that i discovered by using a URL fuzzer from pentest-tools.org. 
 6. ports 22 and 80 open and 1337 amongst others; 22 is ssh port while 80 is the http port and 1337 has the waste service. This info was found utilizing nmap -p-. 
-7. It was a linux ubuntu system
+7. Found using the nmap -O -sV flags were the following guesses for OS 
 8. CMSC389R-{Do_you-N0T_See_this},CMSC389R-{html_h@x0r_lulz},CMSC389R-{n0_indexing_pls},
 
 ### Part 2 (75 pts)
