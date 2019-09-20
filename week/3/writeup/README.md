@@ -1,0 +1,29 @@
+# Operational Security and Social Engineering
+Name: Radhika Khare Section: 0101
+
+I pledge on my honor that I have not given or received any unauthorized assistance on this assignment or examination
+
+Digital Acknowledgement:Radhika Khare
+## Assignment Writeup
+### Part 1
+
+- What's his mother's maiden name?
+- What browser does she primarily use?
+- What city was she born in?
+- What's her ATM pin number?
+- What was the name of her first pet?
+I would call Eric (on the number used for wattsamp as seen from whois) pretending to be the cell phone company I would spoof the call as though it's from them. I would introduce myself and ask then tell him I'm here to get information about the family plan he is on with his mother. Not going to lie this plan really depends on his mother being alive. If he says he is not on a family plan i will tell him that his mother was the one who told me to talk to him so assumed he was on the plan. I will say I would have emailed him on his emergency contact listed email of ejnorman84@gmail.com however we need to hurry because the cell phone shop closes in 10 minutes and if he doesn't answer my questions today then her phone's contract expires tomorrow (and his mother forgot her password. This will create urgency so he won't try to waste my time trying to question me and can't think too much to be suspicious. First I would ask for answers to some of the "security code questions" to pretend to be verifying Eric Norman for access when in reality I don't have the answers. I will ask him his mother's maiden name (ask him to spell it because "standard procedures"), what city she was born in, and what's the name of her first pet. I will ask him to verify that the year she was born in is 1962. This is a random guess by the way. In the case I'm right he will go along with it but in the case I'm wrong he'll be like "No, she's born in year xxxx" to which I will respond saying sorry it's been a long day and it's near closing time so I'm misread by accident. I was also affirm to him that I value his mother as a customer and that's why despite the proximity to closing time I want to reactivite her plan so that she's not without a working phone the next day. The I will ask him to log into the website of the provider and while he is entering with his own credentials I will mention that his mom was having trouble opening the website and that it might have been a browser issue. I will ask him which browser she primarily uses that might have caused the issue. I will talk conversationally (while keeping it professional enough that he believes I work for the cell phone company).Then I will thank him saying I was able to log into the site for her and leave with all the info I needed.
+### Part 2
+
+Choose 3 specific vulnerabilities from homework 2 that you have identified (ie. exposed ports, weak passwords, etc.) and write a brief summary of some suggestions you can provide Eric for the Wattsamp web server and admin server. Be as thorough as possible in your answer, use specific examples and citing online research into security techniques that could be applied to the servers (ie. firewall, IDS/IPS, password managers, etc.).
+
+One of the vulnerabilites I noted was the usage of personal social media accounts and email accounts being used in relation to Wattsamp related things.For example using whois for the wattsamp site it was revealed that the site was registered of Eric Norman specifically and has information such as his address and phone number were freely available. This could lead to a spearphishing attack and can reveal things such as work usernames (as we used ejnorman84 to break into the server). In in the "The Small Business Cybersecurity Blindspot" article by Richard Thompson (article on rmmagazine.com), it is revealed that 75% of small businesses like Wattsamp don't have a social media rule which makes employees like Eric Norman. Another vulnerability is the weak password for the server. Passwords that are easily available on password wordlists are highly unideal. There should be a policy with certain complexity rules like the mixing of lowercase/uppercase letters, numbers, and special characters as well as a minimum password length. Additionally when creating a password in the form there should be a comparison of the password against major password wordlists to reassure that the password is not weak enough to be cracked with a basic brute force script. The best tool would be to use a password manager to create a complex password that are changed every month. It's important to note that frequent password changes by themselves are not effective as many choose to change their password into weaker passwords as noted in the blogpost "Time to rethink mandatory" written by Lorrie Cranor on the ftc.gov website. The required use of password managers will ensure a consistent level of password strength between password changes.The final vulnerability I want to address was the exposed ports that were insecure like port 1337 in the Eric Norman situation. To allow employees access to a ssh port but not attackers there's a thing called port knocking which will hide the port from port scanners like nmap and only lets one into the port under the condition that the access the right sequence of other ports beforehand (from "How to use Port Knocking on Ubuntu to hide the SSH port from howtoforge.com). Additionally if the Wattsamp network has a firewall set up then he can set firewall rules to block access to certain ports completely. 
+### Format
+
+The submission should be answered in bullet form or full, grammatical sentences. It should also be stored in `assignments/3_OPSEC_SE/writeup/README.md`. Push it to your GitHub repository by the deadline.
+
+### Scoring
+
+Part 1 is worth 40 points, part 2 is worth 60 points. The rubric with our expectations can be found on the ELMS assignment posting.
+
+Good luck!
