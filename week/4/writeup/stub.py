@@ -24,10 +24,10 @@ def execute_cmd(cmd):
     data = s.recv(1024)
     while ':' not in data:
         data+=s.recv(1024)
-    print data
+    #print data
     strtosend=';cd '+path_cd+';'+cmd+'\n'
     s.send(strtosend)
-    print strtosend
+    #print strtosend
     time.sleep(1)
     response=s.recv(4000)
     print response
@@ -36,21 +36,21 @@ def execute_cmd(cmd):
          s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
          s.connect((host, port))
 
-         print "so i'm in cd\n"#testing
+         #print "so i'm in cd\n"#testing
          time.sleep(1)
          data = s.recv(1024)
-         print "the data i recieved is "+ data
+         #print "the data i recieved is "+ data
          if len(split_cmd) == 2:
-            print "2 args version"
+            #print "2 args version"
             s.send(";cd "+ path_cd +" ;cd "+split_cmd[1]+" ;pwd\n")
          elif len(split_cmd)==1:
             s.send(";cd " + path_cd + " ;cd;pwd\n")
          else:
             s.send(";pwd\n")
-         print "i asked for pwd after changing directory\n" #testing
+         #print "i asked for pwd after changing directory\n" #testing
          time.sleep(2)
          resp=s.recv(1024)
-         print "did i recieve a response "+resp.rstrip()+"."
+         #print "did i recieve a response "+resp.rstrip()+"."
          global path_cd
          path_cd=resp.rstrip()
          print path_cd
@@ -99,11 +99,11 @@ if __name__ == '__main__':
         print "\n> "
         usr_in=raw_input()
         cmd_in_parts=re.split(" ",usr_in)
-        print "Usr input is"+usr_in
+        #print "Usr input is"+usr_in
         if cmd_in_parts[0] == "shell":
             #input=""
             #while input != "exit":
-            print "in shell\n" #testing
+            #print "in shell\n" #testing
             if len(cmd_in_parts) !=1:
                 print "1. shell Drop into an interactive shell and allow users to gracefully exit \n"
                 print "2. pull <remote-path> <local-path> Download files \n"
@@ -116,15 +116,15 @@ if __name__ == '__main__':
                     if path_cd=="":
                         a = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
                         a.connect((host, port))
-                        print "so i'm in shell\n"#testing
+                        #print "so i'm in shell\n"#testing
                         time.sleep(1)
                         data = a.recv(1024)
-                        print "the data i recieved is "+ data
+                        #print "the data i recieved is "+ data
                         a.send(";pwd\n")
-                        print "i asked for pwd\n" #testing
+                        #print "i asked for pwd\n" #testing
                         time.sleep(2)
                         resp=a.recv(1024)
-                        print "did i recieve a response " +resp.rstrip()+"."
+                       # print "did i recieve a response " +resp.rstrip()+"."
             #print "\n"+ resp+ "\n"
                         prompt="\n"+resp.rstrip()+"> "
                         print prompt
@@ -133,15 +133,15 @@ if __name__ == '__main__':
                         print prompt
                     input=raw_input()
                     execute_cmd(input)
-                    print "out shell\n" #testing
+                    #print "out shell\n" #testing
             ###add check in case extra elements
-            if len(cmd_in_parts) != 1:
+            '''if len(cmd_in_parts) != 1:
                 print "1. shell Drop into an interactive shell and allow users to gracefully exit \n"
                 print "2. pull <remote-path> <local-path> Download files \n"
                 print "3. help Shows this help menu \n"
                 print "4. quit Quit the shell \n"
             else:
-                in_shell = False
+                in_shell = False'''
 
         elif cmd_in_parts[0]== "help":
                 print "1. shell Drop into an interactive shell and allow users to gracefully exit \n"
@@ -155,15 +155,15 @@ if __name__ == '__main__':
                 print "cmd good\n" #testing
                 #execute scp or something here idk
                 #execute_cmd("scp "+cmd_split[1]+" "+cmd_split[2])
-                print "so i'm in shell\n"#testing
+                #print "so i'm in shell\n"#testing
                 time.sleep(1)
                 data = a.recv(1024)
-                print "the data i recieved is "+ data
+                #print "the data i recieved is "+ data
                 a.send(";cat "+cmd_split[1])
-                print "i asked for cat remote path\n" #testing
+                #print "i asked for cat remote path\n" #testing
                 time.sleep(2)
                 resp=a.recv(1024)
-                print "did i recieve a response " +resp.rstrip()+"."
+                #print "did i recieve a response " +resp.rstrip()+"."
                 ogstdout=sys.stdout
                 sys.stdout=open(cmd_split[2],'w')
                 print resp.rstrip()
