@@ -53,7 +53,7 @@ def execute_cmd(cmd):
          #print "did i recieve a response "+resp.rstrip()+"."
          global path_cd
          path_cd=resp.rstrip()
-         print path_cd
+         #print path_cd
 
 
         #for the pull cmd cat the file then use file I/O to open new file with that content
@@ -91,12 +91,13 @@ if __name__ == '__main__':
     usr_in=""
     in_shell= False
     #cd_loc=""
+    #print "\n> "
     while True:
         a = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         a.connect((host, port))
         #if in_shell == True:
         #else:
-        print "\n> "
+        print "\n> "    #may add back
         usr_in=raw_input()
         cmd_in_parts=re.split(" ",usr_in)
         #print "Usr input is"+usr_in
@@ -133,6 +134,7 @@ if __name__ == '__main__':
                         print prompt
                     input=raw_input()
                     execute_cmd(input)
+                in_shell= False
                     #print "out shell\n" #testing
             ###add check in case extra elements
             '''if len(cmd_in_parts) != 1:
