@@ -114,7 +114,7 @@ if __name__ == '__main__':
                 in_shell = True
                 input=""
                 while input!= "exit":
-                    if path_cd=="":
+                    '''if path_cd=="":
                         a = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
                         a.connect((host, port))
                         #print "so i'm in shell\n"#testing
@@ -129,9 +129,9 @@ if __name__ == '__main__':
             #print "\n"+ resp+ "\n"
                         prompt="\n"+resp.rstrip()+"> "
                         print prompt
-                    else:
-                        prompt="\n"+path_cd+"> "
-                        print prompt
+                    else:'''
+                    prompt="\n"+path_cd+"> "
+                    print prompt
                     input=raw_input()
                     execute_cmd(input)
                 in_shell= False
