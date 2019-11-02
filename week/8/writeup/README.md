@@ -13,10 +13,12 @@ Digital acknowledgement: Radhika Khare
 Answer the following questions regarding the server executable (for which source is provided).
 
 1. How is the per-session administrator password generated? Are there any inherent weaknesses in this implementation?
-One time randomly generated password using a time based seed. It doesn't limit number of attempts for the password which makes it vulnerable to possible brute forcing. Also the password is of a fixed size every time which reduces variability of the password and thus also makes it easier to brute force.
+One time randomly generated password using a time based seed. It doesn't limit number of attempts for the password which makes it vulnerable to possible brute forcing. Also the password is of a fixed size every time which reduces variability of the password and thus also makes it easier to brute force. Finally the biggest issue is that in memory its human readable as its in plaintext.
 
 2. Describe two vulnerabilities in this program. Provide specific line numbers and classifications of the vulnerability. Explain potential ramifications as well as ways to avoid these vulnerabilities when writing code.
-Line 68 utilizes gets() which can cause buffer overflow issues. This would cause it to read data without 
-3. What is the flag?
+Line 68 utilizes gets() which can cause buffer overflow issues. This would cause it to read data without checking the length of bytes entered which means that the data can overflow into memory used for something else. Line 46 poses a vulnerability because the printf() could be used for string injection based on what they enter for input. There should be something like %s to control that a string is printed out.
 
+3. What is the flag?
+CMSC389R-{expl017-2-w1n}
 4. Describe the process you followed to obtain the flag: vulnerabilities exploited, your inputs to the server in a human-readable format, etc. If you create any helper code please include it.
+Utilizing gdb I noted that based on when printf is called the password location is exp +4*29
