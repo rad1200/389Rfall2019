@@ -50,7 +50,6 @@ int main(void) {
         password[i] = rand() % ('z'-' ') + ' ';
     }
     password[PASS_SIZE] = 0;
-
     printf("%s\n", password);
     /*free(password);*/
     n=n-1;
