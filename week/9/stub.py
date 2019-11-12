@@ -66,25 +66,25 @@ while i < int(section):
     slen = int(slen)
     offset=offset+8
     if stype == 1:
-        (output,) = struct.unpack(("<%ds" % slen), data[offset: (offset + slen)])
-        print("ASCII OUTPUT: %s" % (output))
+        output = struct.unpack("<%ds" % slen, data[offset: (offset + slen)])
+        print("ASCII: %s" % (output))
         
     elif stype == 2:
-        (output,) = struct.unpack(("<%ds" % slen), data[offset : (offset + slen)])
+        output = struct.unpack("<%ds" % slen, data[offset : (offset + slen)])
         output = output.decode('utf-8')
-        print("UTF-8 OUTPUT: %s" % (output))
+        print("UTF-8: %s" % (output))
         
     elif stype == 3:
         (output,) = struct.unpack("<" + ("%s" % 'L' * int(slen/4)), data[offset : (offset  + slen)])
-        print("WORDS OUTPUT: %s" % (output))
+        print("WORDS: %s" % (output))
         
     elif stype == 4:
         (output,) = struct.unpack("<" + ("%s" % 'L' * int(slen/8)), data[offset : (offset + slen)])
-        print("DWORDS OUTPUT: %s" % (output))
+        print("DWORDS: %s" % (output))
 
     elif stype == 5:
         (output,) = struct.unpack("<" + ("%s" % 'L' * int(slen/8)), data[offset : (offset + slen)])
-        print("DOUBLES OUTPUT: %s" % (output))
+        print("DOUBLES: %s" % (output))
 
     elif stype == 6:
         if slen == 16:
@@ -94,18 +94,18 @@ while i < int(section):
             y_coord = output[1]
 
             if (x_coord > 180) or (x_coord < -180) or (y_coord > 180) or (y_coord < -180):
-                bork("BAD COORDS")
+                bork("coords invalid")
             else:
-                print("COORDS OUTPUT: %s" % str(output))
+                print("COORDS: %s" % str(output))
         else:
-            bork("WRONG SIZE FOR COORDS")
+            bork("coords invalid")
 
     elif stype == 7:
         if slen == 4:
             output = struct.unpack("<L", data[offset : (offset + slen)])
-            print("REFRENCE OUTPUT: %d" % output[0])
+            print("REFERENCE: %d" % output[0])
         else:
-            bork("WORNG SIZE FOR REFRENCE")            
+            bork("reference invalid")            
     elif stype == 8:
         png_magic = [137, 80, 78, 71, 13, 10, 26, 10]
         output = struct.unpack("<" + ("%s" % 'B' * (slen)), data[offset : (offset + slen)])
@@ -114,7 +114,7 @@ while i < int(section):
 
     	image = open("pngimage.png", "wb")
     	image.write(bytearray(png))
-   	print ("Image/gif generated %s" % "pngimage.png")
+   	print ("CREATED %s" % "pngimage.png")
 
     elif stype == 9:
         gif87_magic = [47, 49, 46, 38, 37, 61]
@@ -124,7 +124,7 @@ while i < int(section):
 
     	image = open(gif87img.gif, "wb")
     	image.write(bytearray(gif87))
-    	print ("Image/gif generated %s" % "gif87img.gif")
+    	print ("CREATED %s" % "gif87img.gif")
  
     elif stype == 10:
         gif89_magic = [47, 49, 46, 38, 39, 61]
@@ -134,7 +134,7 @@ while i < int(section):
 
         image = open(gif89img.gif, "wb")
         image.write(bytearray(gif89))
-        print ("Image/gif generated %s" % "gif89img.gif")
+        print ("CREATED %s" % "gif89img.gif")
 
         
     offset = offset + slen
