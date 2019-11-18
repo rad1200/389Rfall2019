@@ -87,18 +87,14 @@ while i < int(section):
         print("DOUBLES: %s" % (output))
 
     elif stype == 6:
-        if slen == 16:
+
             output = struct.unpack("<dd", data[offset : (offset + slen)])
 
-            x_coord = output[0]
-            y_coord = output[1]
-
-            if (x_coord > 180) or (x_coord < -180) or (y_coord > 180) or (y_coord < -180):
+            if (output[0] > 180) or (output[0] < -180) or (output[1] > 180) or (output[1] < -180):
                 bork("coords invalid")
             else:
                 print("COORDS: %s" % str(output))
-        else:
-            bork("coords invalid")
+      
 
     elif stype == 7:
         if slen == 4:
