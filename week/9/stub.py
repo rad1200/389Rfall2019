@@ -8,22 +8,6 @@ from datetime import datetime
 # You can use this method to exit on failure conditions.
 def bork(msg):
     sys.exit(msg)
-
-
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
     
     
 # Some constants. You shouldn't need to change these.
