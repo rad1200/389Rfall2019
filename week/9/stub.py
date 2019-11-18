@@ -10,6 +10,22 @@ def bork(msg):
     sys.exit(msg)
 
 
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 # Some constants. You shouldn't need to change these.
 MAGIC = 0x8BADF00D
 VERSION = 1
