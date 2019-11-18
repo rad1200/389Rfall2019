@@ -30,4 +30,4 @@ Section 6 COORDS OUTPUT: (52.336035, 4.880673)
 Section 8 Image/gif generated (PNG) pngimage.png
 Section 1 ASCII OUTPUT: }R983CSMC_perg_tndid_u0y_yllufep0h{-R983CSMC
 Section 1 ASCII OUTPUT: Q01TQzM4OVIte2hleV9oM3lfeTBVX3lvdV9JX2RvbnRfbGlrZV95b3VyX2Jhc2U2NF9lbmNvZGluZ30=
-4. Reverse in section 4 is CMSC389R-{h0pefully_y0u_didnt_grep_CMSC389R}
+4. Reverse in section 4 is CMSC389R-{h0pefully_y0u_didnt_grep_CMSC389R} 
