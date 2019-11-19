@@ -13,7 +13,7 @@ Digital acknowledgement: Radhika Khare
 ### Part 1 (45 Pts)
 1. The ledger file consists of the key hash, ciphertext hash, initialization vector, and the cipher text itself. The byte offsets are 16 bytes each for the key_hash, ctext_hash, and initialization vector. The cipher text length is size of the file bytes minus 48 bytes of the other stuff mentioned before.
 2. It utilizes md5hash and aes128. While a hash cannot be decrypted there are inevitable collisions which make it possible to crack a hash. Md5 is particularly prone to brute force attacks. Generally SHA is considered more secure than md5 due to the fact that people haven't "broken" it yet and it has longer bit outputs (add faults of aes128) (so its double hashing)
-3. The binary file is in hex
+3. The binary file when converting the hex to ascii is written with all these special ascii characters. None of the initial hex values matched any known magic numbers for a file. I cannot currently tell anything else.
 4. To ensure confedentiality messages are encrypted before being written to the file. The encryption key is derived using aes_encrypt() (aes128 hashing) which takes in cipher_params struct and the address of the ctext variable and then md5 hashing the pointer itself and the value derived from aes_encrypt(). 
 5. It checks integrity by seeing if hash in file is as expected by using memcmp to compare the cipher test once hashed with the cipher text's hash in the ledger. 
 6.
