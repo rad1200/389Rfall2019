@@ -9,7 +9,7 @@
 #include "crypto.h"
 #include "common.h"
 
-#define LEDGER_FILE "ledger.bin"
+#define LEDGER_FILE "l32"
 #define PERMISSIONS (S_IRUSR | S_IWUSR)
 
 void append_ledger(struct cipher_params *params) {

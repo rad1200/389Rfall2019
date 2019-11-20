@@ -1,7 +1,6 @@
 CC=gcc
 CFLAGS=-g -fno-stack-protector -fno-pie -fPIC -m32
 LDFLAGS=-lcrypto
-OBJECTS=crypto.o common.o
 TARGETS=ledger crack
 
 ledger: ledger.o $(OBJECTS)
