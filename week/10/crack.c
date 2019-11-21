@@ -9,7 +9,7 @@
 #include "crypto.h"
 #include "common.h"
 
-#define LEDGER_FILE "l32"
+#define LEDGER_FILE "ledger.bin"
 #define PERMISSIONS (S_IRUSR | S_IWUSR)
 
 const int NUM=62;
@@ -39,12 +39,13 @@ int main(int argc, char **argv) {
 	key[8]=0;
 	pass_hash=md5_hash(key, strlen(key));
 	memset(pass_hash+2, 0, 14);
-	key_hash= md5_hash(key, 2);
+	key_hash= md5_hash(pass_hash, 2);
    	if(memcmp(key_hash, fd_key_hash, 16) != 0){
-		printf("%s\n",key);
+		/*printf("%s\n",key);*/
 		worked=0;
+		/*printf("%d\n",worked);*/
 	} else{
-		printf("The password is %s\n",key);
+		printf("%s\n",key);
 		worked=1;
 		free(pass_hash);
 		free(key_hash);
