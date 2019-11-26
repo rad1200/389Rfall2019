@@ -32,7 +32,7 @@ Level 2: i did <img src="image.gif" onerror="alert("hi sad, im dad")"> to produc
   
 Level 3: i changed the url to https://xss-game.appspot.com/level3/frame#3' onerror='alert("lol")'; to produce an alert that says "lol". Again since we couldn't use the script tags i utilized onerror. Based on the code I found the chooseTab function which makes the URL. I realized that by manipulating the amount of single quotes in my addition for the URL i can execute my desired alert() when it's trying to get the value for the num parameter
 
-level 4: i inserted 4')+ alert('goodbye into the textbox. As recommended by a hint I started looking at how the timer was called taking note of the line:  <img src="/static/loading.gif" onload="startTimer('{{ timer }}');" /> from timer.html in particular.
+level 4: i inserted 4')+ alert('goodbye into the textbox. As recommended by a hint I started looking at how the timer was called taking note of the line:  "<img src="/static/loading.gif" onload="startTimer('{{ timer }}');" />" from timer.html in particular.
 
 Level 4:
 
