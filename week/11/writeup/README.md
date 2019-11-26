@@ -29,6 +29,10 @@ Produce a writeup. We will not take off points for viewing the source code and/o
 Level 1: in the query box i entered <script>alert("im sad")</script> to display an alert that says "im sad"
 
 Level 2: i did <img src="image.gif" onerror="alert("hi sad, im dad")"> to produce an alert that says "hi sad, im dad". Since the <script> tags won't work I looked into other tags that could execute javascript. I learned that onerror executes a javascript command in the case of an error loading an image
+  
+Level 3: i changed the url to https://xss-game.appspot.com/level3/frame#3' onerror='alert("lol")'; to produce an alert that says "lol". Again since we couldn't use the script tags i utilized onerror. Based on the code I found the chooseTab function which makes the URL. I realized that by manipulating the amount of single quotes in my addition for the URL i can execute my desired alert() when it's trying to get the value for the num parameter
+
+Level 4:
 
 ### Format
 
