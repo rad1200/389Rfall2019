@@ -27,7 +27,7 @@ Complete all 6 levels of:
 Produce a writeup. We will not take off points for viewing the source code and/or viewing hints, but we strongly discourage reading online write-ups as that defeats the purpose of the homework.
 
 Level 1: in the query box i entered <script>alert("im sad")</script> to display an alert that says "im sad"
-Level 2: i did <img src="image.gif" onerror="alert("hi sad, im dad")">
+Level 2: i did <img src="image.gif" onerror="alert("hi sad, im dad")"> to produce an alert that says "hi sad, im dad". Since the <script> tags won't work I looked into other tags that could execute javascript. I learned that onerror executes a javascript command in the case of an error loading an image
 
 ### Format
 
