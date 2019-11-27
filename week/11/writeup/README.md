@@ -34,8 +34,11 @@ Level 3: i changed the url to https://xss-game.appspot.com/level3/frame#3' onerr
 
 level 4: i inserted 4')+ alert('goodbye into the textbox to get an alert of goodbye. As recommended by a hint I started looking at how the timer was called taking note of the <img src ... "startTimer('{{ timer }}');" /> line from timer.html in particular. By doing 4') im giving the integer seconds value it wants but manipulating the quotations such that with the + I can execute the alert. The ending ') you'd expect the alert to have is included in the statement already so it's not needed
 
-level 5: i changed the url to be https://xss-game.appspot.com/level5/frame/signup?next=alert("let this alert you") on the sign up page were the alert is "let this alert you". The following line in signup.html <link ... href="/static/game-frame-styles.css" /> 
+level 5: i changed the url to be https://xss-game.appspot.com/level5/frame/signup?next=alert("let this alert you") on the main page and the alert is "let this alert you". The following line in signup.html <link ... href="/static/game-frame-styles.css" /> pointed me towards looking at the URL. Remembering an example from class i decided to make next equal the alert i wanted to execute instead of confirm. when i put a  value in the email signup area and then pressed next the alert would appear
 
+level 6:
+
+Level 6:
 
 ### Format
 
