@@ -19,7 +19,7 @@ Such a Quick Little, website!
 
 [http://142.93.136.81:5000/](http://142.93.136.81:5000/)
 
-I determined that this part would be related to SQL injections. I observed the URLs of the vulnerable goods and noticed that they all ended with id= a number (0,1, or 2). Using the 1=1 is always true trick for SQL injections. After entering http://142.93.136.81:5000/item?id=0'||'1'='1 i got the flag CMSC389R-{y0u_ar3_th3_SQ1_ninj@}.
+I determined that this part would be related to SQL injections. I observed the URLs of the vulnerable goods and noticed that they all ended with id= a number (0,1, or 2). Using the 1=1 is always true trick for SQL injections i entered http://142.93.136.81:5000/item?id=0'||'1'='1 i got the flag CMSC389R-{y0u_ar3_th3_SQ1_ninj@}.
 
 ### Part 2 (60 Pts)
 Complete all 6 levels of:
