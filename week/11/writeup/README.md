@@ -38,9 +38,7 @@ level 4: i inserted 4')+ alert('goodbye into the textbox to get an alert of good
 
 level 5: i changed the url to be https://xss-game.appspot.com/level5/frame/signup?next=alert("let this alert you") on the main page and the alert is "let this alert you". The following line in signup.html <link ... href="/static/game-frame-styles.css" /> pointed me towards looking at the URL. Remembering an example from class i decided to make next equal the alert i wanted to execute instead of confirm. when i put a  value in the email signup area and then pressed next the alert would appear
 
-level 6:
-
-Level 6:
+Level 6: i changed the url to be https://xss-game.appspot.com/level6/frame#data:text/javascript,alert('final'). I discovered online that there's this thing data:text/javascript, (thing to be done in js) called a data url which allowed me to get this to work
 
 ### Format
 
